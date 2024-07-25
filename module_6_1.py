@@ -1,23 +1,22 @@
 class Animal:
-
     def __init__(self, name):
         self.name = name
         self.alive = True
         self.fed = False
 
     def eat(self, food):
-        self.food = food
         if isinstance(food, Plant):
             if food.edible:
                 print(f'{self.name} съел {food.name}')
+                self.fed = True
             else:
                 print(f'{self.name} не стал есть {food.name}')
+                self.alive = False
         else:
             print(f'{self.name} не может есть {food.name}')
 
 
 class Plant:
-
     def __init__(self, name):
         self.name = name
         self.edible = False
@@ -52,5 +51,7 @@ print(a1.alive)
 print(a2.fed)
 a1.eat(p1)
 a2.eat(p2)
+print(a1.alive)
+print(a2.fed)
 print(a1.alive)
 print(a2.fed)
